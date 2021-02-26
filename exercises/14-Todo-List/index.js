@@ -5,23 +5,37 @@ texto.addEventListener("keypress", function(e) {
 	var keycode = e.keyCode ? e.keyCode : e.which;
 	if (keycode == 13) {
 		//alert("cambio!!!!");
+		let valor = document.getElementById("addToDo").value;
+		let elemli = document.createElement("LI");
+		//elemli.textContent =
 
-		var elemli = document.createElement("li");
-
-		elemli.innerHTML = document.getElementById("addToDo").value;
-
+		elemli.innerHTML = `<span><i class="fa fa-trash"> ${valor}`;
 		document.querySelector("ul").appendChild(elemli);
-
-		//document.querySelector("ul").appendChild('<li><span><i class="fa fa-trash"></i></span> coco</li>');
 	}
 });
 /*
-var list = document.querySelector("ul");
+let list = document.getElementsByName("UL");
+var lista = document.getElementsByTagName("UL");
 
+list.addEventListener("click", e => {
+	list.removeChild(list.children[e]);
+});
 
-list.addEventListener("click",function(){
-	list.removeChild(list.childNodes[0]);
+//this.parentNode.removeChild(this);
+*/
+
+const lis = document.querySelectorAll("li");
+
+for (let li of lis) {
+	li.addEventListener("click", function() {
+		this.parentNode.removeChild(this);
+		//console.log(this);
+	});
 }
-	//this.parentNode.removeChild(this);
 
+/*
+const ul = document.querySelector("ul");
+ul.addEventListener("click", function(e) {
+	this.removeChild(e.target);
+});
 */
